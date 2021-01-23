@@ -1,5 +1,6 @@
 package com.cadastro.api_rest.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cadastro.api_rest.models.Cadastro;
+import com.cadastro.api_rest.models.Contato;
 import com.cadastro.api_rest.repository.CadastroRepository;
 
 @RestController
@@ -34,7 +36,8 @@ public class CadastroResource {
 	
 	@PostMapping("/cadastro")
 	public Cadastro salvaCadastro(@RequestBody Cadastro cadastro) {
-		return cadastroRepository.save(cadastro);
+		cadastro.getContatos().forEach(c -> c.setCadastro(cadastro));
+		return this.cadastroRepository.save(cadastro);
 	}
 	
 	@DeleteMapping("/cadastro")
@@ -44,6 +47,7 @@ public class CadastroResource {
 	
 	@PutMapping("/cadastro")
 	public Cadastro atualizaCadastro(@RequestBody Cadastro cadastro) {
+		cadastro.getContatos().forEach(c -> c.setCadastro(cadastro));
 		return cadastroRepository.save(cadastro);
 	}
 }

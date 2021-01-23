@@ -1,12 +1,19 @@
 package com.cadastro.api_rest.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -21,8 +28,11 @@ public class Cadastro implements Serializable{
 	
 	private String nome;
 	private String cpf;
-	private String dataNascimento;
-	//falta o contato
+	private LocalDate dataNascimento;
+	
+	@JsonIgnoreProperties("cadastro")
+	@OneToMany(mappedBy = "cadastro", cascade = CascadeType.ALL)
+	private List<Contato> contatos;
 	
 	
 	public long getId() {
@@ -43,11 +53,18 @@ public class Cadastro implements Serializable{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}	
+	}
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
+	
 	
 }
