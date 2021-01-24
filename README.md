@@ -19,6 +19,6 @@
 
 ### Observações
 
-- Exemplo URL local: 
-	Para testar com Swagger: http://localhost:8080/swagger-ui.html
-	Para testar via Postman: http://localhost:8080/api/cadastros
+#### Exemplo URL local: 
+- Para testar com Swagger: http://localhost:8080/swagger-ui.html
+- Para testar via Postman: http://localhost:8080/api/cadastros
