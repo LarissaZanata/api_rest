@@ -2,7 +2,6 @@ package com.cadastro.api_rest.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +15,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,20 +32,20 @@ public class Cadastro implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotBlank
+	@NotBlank(message = "{name.not.blank}")
 	@Column(nullable = false, length = 60)
 	private String nome;
 	
-	@NotBlank
-	@CPF
+	@NotBlank(message = "{cpf.not.blank}")
+	@CPF(message = "{cpf.not.blank}")
 	@Column(nullable = false, length = 15)
 	private String cpf;
 	
-	@NotNull
+	@NotNull()
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDate dataNascimento;
 	
-	@NotEmpty
+	@NotEmpty(message = "{contato.not.null}")
 	@JsonIgnoreProperties("cadastro")
 	@OneToMany(mappedBy = "cadastro", cascade = CascadeType.ALL)
 	private List<Contato> contatos;

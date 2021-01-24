@@ -3,7 +3,10 @@ package com.cadastro.api_rest.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cadastro.api_rest.models.Cadastro;
 import com.cadastro.api_rest.models.Contato;
@@ -36,7 +40,7 @@ public class CadastroResource {
 	}
 	
 	@PostMapping("/cadastro")
-	public Cadastro salvaCadastro(@RequestBody Cadastro cadastro) {
+	public Cadastro salvaCadastro(@RequestBody @Valid Cadastro cadastro) {
 		cadastro.getContatos().forEach(c -> c.setCadastro(cadastro));
 		return this.cadastroRepository.save(cadastro);
 	}
