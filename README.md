@@ -1,5 +1,5 @@
 # API Cadastro de Pessoa
-###Tecnologias Utilizadas
+### Tecnologias Utilizadas
 
 - [x] Java 8
 - [x] Spring Boot
@@ -7,4 +7,4 @@
 - [x] JUnit(atualizar depois)
 - [x] Swegger
 
-#Rotas Implementadas
+# Rotas Implementadas
