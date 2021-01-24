@@ -1,6 +1,5 @@
 package com.cadastro.api_rest.models;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

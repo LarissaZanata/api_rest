@@ -1,15 +1,13 @@
 package com.cadastro.api_rest.resources;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cadastro.api_rest.models.Cadastro;
-import com.cadastro.api_rest.models.Contato;
 import com.cadastro.api_rest.repository.CadastroRepository;
 
 import io.swagger.annotations.Api;
@@ -35,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
 public class CadastroResource {
 	
 	@Autowired
-	CadastroRepository cadastroRepository;
+	private CadastroRepository cadastroRepository;
 	
 	@GetMapping("/cadastros")
 	@ApiOperation(value = "Retorna uma lista de cadastros.")
