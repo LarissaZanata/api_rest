@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,8 +39,8 @@ public class CadastroResource {
 	
 	@GetMapping("/cadastros")
 	@ApiOperation(value = "Retorna uma lista de cadastros.")
-	public List<Cadastro> listaCadastros(){
-		return cadastroRepository.findAll();
+	public Page<Cadastro> listaCadastros(Pageable pageable){
+		return cadastroRepository.findAll(pageable);
 	}
 	
 	@GetMapping("/cadastro/{id}")
